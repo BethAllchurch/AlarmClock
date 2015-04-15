@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/vendor/font-awesome-4.3.0/css/font-awesome.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <title>Mini Alarm Clock</title>
+    </head>
+    <body>
+        <div class="app">
+            <div id="outer-container">
+                <div id="set-alarm" class="container">
+                    <div class="buffer"></div>
+                    <div class="opacity-overlay">
+                        <div class="mini-logo">
+                            <img src="img/mini-logo.png">
+                        </div>
+                        <div id="days" class="inner-container">
+                            <div class="down-arrow"><i class="fa fa-caret-down"></i></div>
+                            <select id="select-day">
+                                <option id="monday" class="day">MONDAY</option>
+                                <option id="tuesday" class="day">TUESDAY</option>
+                                <option id="wednesday" class="day">WEDNESDAY</option>
+                                <option id="thursday" class="day">THURSDAY</option>
+                                <option id="friday" class="day">FRIDAY</option>
+                                <option id="saturday" class="day">SATURDAY</option>
+                                <option id="sunday" class="day">SUNDAY</option>
+                            </select>
+                        </div>
+                        <div id="hours" class="inner-container">
+                            <div class="select-group">
+                                <h2>HOUR</h2>
+                                <select id="select-hour">
+                                    <option class="hour">00</option>
+                                    <option class="hour">01</option>
+                                    <option class="hour">02</option>
+                                    <option class="hour">03</option>
+                                    <option class="hour">04</option>
+                                    <option class="hour">05</option>
+                                    <option class="hour">06</option>
+                                    <option class="hour">07</option>
+                                    <option class="hour">08</option>
+                                    <option class="hour">09</option>
+                                    <option class="hour">10</option>
+                                    <option class="hour">11</option>
+                                    <option class="hour">12</option>
+                                    <option class="hour">13</option>
+                                    <option class="hour">14</option>
+                                    <option class="hour">15</option>
+                                    <option class="hour">16</option>
+                                    <option class="hour">17</option>
+                                    <option class="hour">18</option>
+                                    <option class="hour">19</option>
+                                    <option class="hour">20</option>
+                                    <option class="hour">21</option>
+                                    <option class="hour">22</option>
+                                    <option class="hour">23</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div id="minutes" class="inner-container">
+                            <div class="select-group">
+                                <h2>MINUTES</h2>
+                                <select id="select-minute">
+                                    <option class="minute">00</option>
+                                    <option class="minute">01</option>
+                                    <option class="minute">02</option>
+                                    <option class="minute">03</option>
+                                    <option class="minute">04</option>
+                                    <option class="minute">05</option>
+                                    <option class="minute">06</option>
+                                    <option class="minute">07</option>
+                                    <option class="minute">08</option>
+                                    <option class="minute">09</option>
+
+                                    <option class="minute">10</option>
+                                    <option class="minute">11</option>
+                                    <option class="minute">12</option>
+                                    <option class="minute">13</option>
+                                    <option class="minute">14</option>
+                                    <option class="minute">15</option>
+                                    <option class="minute">16</option>
+                                    <option class="minute">17</option>
+                                    <option class="minute">18</option>
+                                    <option class="minute">19</option>
+
+                                    <option class="minute">20</option>
+                                    <option class="minute">21</option>
+                                    <option class="minute">22</option>
+                                    <option class="minute">23</option>
+                                    <option class="minute">24</option>
+                                    <option class="minute">25</option>
+                                    <option class="minute">26</option>
+                                    <option class="minute">27</option>
+                                    <option class="minute">28</option>
+                                    <option class="minute">29</option>
+
+                                    <option class="minute">30</option>
+                                    <option class="minute">31</option>
+                                    <option class="minute">32</option>
+                                    <option class="minute">33</option>
+                                    <option class="minute">34</option>
+                                    <option class="minute">35</option>
+                                    <option class="minute">36</option>
+                                    <option class="minute">37</option>
+                                    <option class="minute">38</option>
+                                    <option class="minute">39</option>
+
+                                    <option class="minute">40</option>
+                                    <option class="minute">41</option>
+                                    <option class="minute">42</option>
+                                    <option class="minute">43</option>
+                                    <option class="minute">44</option>
+                                    <option class="minute">45</option>
+                                    <option class="minute">46</option>
+                                    <option class="minute">47</option>
+                                    <option class="minute">48</option>
+                                    <option class="minute">49</option>
+
+                                    <option class="minute">50</option>
+                                    <option class="minute">51</option>
+                                    <option class="minute">52</option>
+                                    <option class="minute">53</option>
+                                    <option class="minute">54</option>
+                                    <option class="minute">55</option>
+                                    <option class="minute">56</option>
+                                    <option class="minute">57</option>
+                                    <option class="minute">58</option>
+                                    <option class="minute">59</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button id="set-alarm-button">SET ALARM</button>
+                    </div>
+                </div>
+                <div id="homepage" class="container">
+                    <div class="overlay">
+                        <i class="fa fa-chevron-left instruction"></i>
+                        <i class="fa fa-chevron-down instruction"></i>
+                        <i class="fa fa-chevron-right instruction"></i>
+                        <div id="overlay-header">
+                            <div class="mini-logo">
+                                <img src="img/mini-logo.png">
+                            </div>
+                            <h2 id="alarm-time"></h2>
+                        </div>
+                        <div id="time-and-forecast">
+                            <div id="time-now">
+                                <h1><span id="day-now" class="time-now-element"></span></h1>
+                                <h1>
+                                    <span id="hour-now-ten" class="time-now-element number"></span>
+                                    <span id="hour-now-unit" class="time-now-element number"></span>
+                                    <span id="minute-now-ten" class="time-now-element number"></span>
+                                    <span id="minute-now-unit" class="time-now-element number"></span>
+                                </h1>
+                            </div>
+                            <div id="forecast">
+                                <div class="weather-type-icon"></div>
+                                <p class="temperature"><span class="temperature-number"></span><span class="degree-symbol">&#176;</span>c</p>
+                                <p class="description"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="underlay">
+                        <div class="weather-type-icon"></div>
+                        <p class="temperature"><span class="temperature-number"></span><span class="degree-symbol">&#176;</span>c</p>
+                        <p class="location"></p>
+
+                        <div id="suggestion-box">
+                            <div class="suggestion-box-inner-container">
+                                <p>YOUR DAILY SUGGESTION</p>                        
+                                <p id="activity-suggestion">something nice to do today</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/vendor/jquery-2.1.3.min.js"></script>
+        
+        <script type="text/javascript" src="js/vendor/hammer.min.js"></script>
+        <script type="text/javascript" src="js/Alarm.js"></script>
+        <script type="text/javascript" src="js/Weather.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
+    </body>
+</html>

@@ -1,0 +1,432 @@
+@font-face {
+  font-family: 'Cochin';
+    src: url("../fonts/Cochin/Cochin.eot");
+    
+    src: url("../fonts/Cochin/Cochin.svg") format('svg'),
+         url("../fonts/Cochin/Cochin.ttf") format('truetype'),
+         url("../fonts/Cochin/Cochin.woff") format('woff');
+}
+
+/* General */
+
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+    background-color: #E2E2E2;
+    font-family:'Cochin', sans-serif;
+    font-size:14px;
+    height:100%;
+    margin:0px;
+    padding:0px;
+    width:100%;
+}
+
+h1, h2 {
+    font-weight:normal;
+    overflow:visible;
+    padding:0px;
+    text-align:center;
+    font-weight:normal;
+}
+
+button {
+    background: none;
+    border: none;   
+    color: #FFF;
+    padding: 5px 10px;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 54px;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+select {
+    -webkit-appearance:none;
+    -moz-appearance:none;
+    appearance:none;
+    border: none;
+    font-size: 16px;
+    font-family: 'Cochin', sans-serif;
+}
+
+.instruction {
+    position: absolute;
+    font-size: 16px;
+    &.fa-chevron-left {
+        top: 100px;
+        left: 5px;
+        color: #000;
+    }
+    &.fa-chevron-right {
+        bottom: 180px;
+        right: 5px;
+        color: #FFF;
+        z-index: 10;
+        &.show-forecast {
+            opacity: 0;
+        }
+    }
+    &.fa-chevron-down {
+        bottom: 5px;
+        color: #FFF;
+    }
+}
+
+/* Containers */
+
+.app {
+    text-align: center; 
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+    position:relative;
+    transition: right 0.2s ease-in;
+    &.show-set-alarm #set-alarm {
+        left: initial;
+    }
+}
+
+#outer-container {
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    float: left;
+    position: absolute;
+}
+
+.inner-container {
+    margin: 15px 0;
+}
+
+/* Main pages */
+
+#homepage {
+    z-index: 0;  
+    .temperature {
+        font-size: 54px;
+        float: left;
+        font-weight: bold;
+        height: 60px;
+        line-height: 60px;
+    }
+    .description {
+        font-size: 24px;
+        width: 100%;
+        margin-top: 120px;
+    }
+    .location {
+        text-align: left;
+        font-size: 22px;
+        border-top: 1px solid #f2f2f2;
+        border-bottom: 1px solid #f2f2f2;
+        padding: 20px 0 20px 20px;
+        margin-top: 100px;
+    }
+
+    .weather-type-icon {  
+        margin-right: 20px;
+        margin-left: 40px;
+        line-height: 60px;      
+        float: left;
+    }
+    &.cloud {
+        .weather-type-icon {
+            width: 80px;
+            height: 60px;
+            background-image: url('../img/cloud-icon.png');
+            background-size: cover;
+        }
+    }
+    &.rain {
+        .weather-type-icon {
+            width: 85px;
+            height: 85px;
+            background-image: url('../img/rain-icon.png');
+            background-size: cover;
+        }
+    }
+    &.sun {
+        .weather-type-icon {
+            width: 85px;
+            height: 85px;
+            background-image: url('../img/sun-icon.png');
+            background-size: cover;
+        }
+    }  
+}
+
+#set-alarm {
+    background-image: url('../img/mini-background.jpg');
+    background-size: cover;
+    z-index: 5;
+    left: -105%;
+    box-shadow: 5px 0 10px #777;
+    transition: left 0.4s ease-in;
+    .opacity-overlay {
+        height: 100%;
+        position: relative;
+        background: -webkit-linear-gradient(rgba(255, 255, 255, 0.8), #FFF); /* For Safari 5.1 to 6.0 */
+        background: -o-linear-gradient(rgba(255, 255, 255, 0.8), #FFF); /* For Opera 11.1 to 12.0 */
+        background: -moz-linear-gradient(rgba(255, 255, 255, 0.8), #FFF); /* For Firefox 3.6 to 15 */
+        background: linear-gradient(rgba(255, 255, 255, 0.8), #FFF);
+    }
+}
+
+/* Homepage components */
+
+.overlay, .underlay {
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+.overlay {
+    background-color: #000;
+    z-index: 0;
+    
+}
+
+.underlay {
+    padding: 20px;
+    top: 102%;
+    z-index: 5;
+    background-color: #FFF;
+    box-shadow: 0 -3px 10px #777;
+    transition: top 0.4s ease-in;
+    p {
+        margin: 15px 0;
+    }
+    &.show {
+        top: 33%;
+    }
+}
+
+#overlay-header {
+    height: 35%;
+    background-color: #FFF;
+    border-bottom: 10px solid #ff6600;
+    margin-top: 20px;
+    transition: background-color 0.4s ease-in;
+    &.dark {
+        background-color: #333;
+    }
+}
+
+.mini-logo {
+    text-align: right;
+    padding: 30px 25px 30px 0;
+    img {
+        width: 100px;
+    }
+}
+
+#time-and-forecast {
+    position: relative;
+    height: 65%;
+    margin: 15px;
+    overflow: hidden;
+    &.show-forecast {
+        #time-now {
+            right: 100%;
+        }
+        #forecast {
+            left: initial;
+        }
+    }
+}
+
+#forecast {
+    color: #FFF;
+}
+
+.buffer {
+    height: 20px;
+    background-color: #000;
+}
+
+#time-now, #forecast {
+    transition: all 0.2s ease-in;
+    position: absolute;
+    width: 100%;
+    background-color: #000;  
+    top: 40%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);  
+}
+
+#time-now {
+    h1, h2 {
+        line-height: 60px;
+    }
+    span {
+        color: #FFF;
+        padding: 15px;
+        background-color: #1a1a1a;
+    }
+}
+
+#day-now {
+    min-width: 195px;
+    padding: 15px;
+    font-size: 28px;
+}
+
+.time-now-element.number {
+    font-size: 36px;
+    margin-right: 1px;
+    &:nth-child(2) {
+        margin-right: 4px;
+    }
+}
+
+#forecast {
+    left: 100%;
+    p {
+        margin: 10px auto;
+        padding: 0;
+    }
+
+}
+
+#alarm-time {
+    font-size: 14px;
+    line-height: 24px;
+    i {
+        line-height: 24px;
+        margin-right: 8px;
+        color: #CCC;
+        transition: color 0.2s ease-in;
+        &.dark {
+            color: #222;
+        }
+    }
+}
+
+#display-alarm {
+    padding: 15px 0;
+    p {
+        margin: 0;
+        font-size: 18px;
+    }
+}
+
+
+/* Set alarm page components */
+
+#select-day {
+    margin-top: 120px;
+    width: 85%;
+    padding: 10px 20px;
+    border-radius: 0;
+    color: #FFF;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+#set-alarm-button {
+    font-size: 18px;
+    background-color: #000;
+    margin: auto;
+    padding: 50px 0;
+    width: 85%;
+    margin-top: 25px;
+}
+
+#hours, #minutes {
+    display: inline-block;
+    width: 40%;
+    select {
+        display: inline-block;
+    }
+    h2 {
+        font-size: 16px;
+        margin-bottom: 5px;
+        display: inline-block;
+    }
+}
+
+#days {
+    .down-arrow {
+        text-align: right;
+        width: 6%;
+        color: #FFF;
+        position: absolute;
+        top: 246px;
+        font-size: 24px;
+        margin-left: 86.5%;
+        padding-right: 15px;
+        line-height: 40px;
+    }
+}
+
+#hours {
+    .select-group {
+        text-align: left;
+    }
+}
+
+#minutes {
+    .select-group {
+        text-align: right;
+    }
+}
+
+
+.degree-symbol {
+    font-weight: normal;
+    padding: 0 2px;
+    color: #ffff00;
+}
+
+#suggestion-box {
+    color: #FFF;
+    background-color: #000;
+    p:first-child {
+        padding: 15px;
+        color: #f2f2f2;
+        border-bottom: 1px solid #1a1a1a;
+    }
+}
+#activity-suggestion {
+    padding-bottom: 20px;
+    font-size: 18px;
+}
+
+.suggestion-box-inner-container {
+    display: inline-block;
+    &:first-child {
+        width: 32%;    
+    }
+    &:last-child {
+        width: 65%;
+    }
+}
